@@ -4,9 +4,12 @@ import { HomeStack } from './navigation/stack';
 export default function App() {
   
   return (
-    <NavigationContainer>
       <HomeStack/>
-    </NavigationContainer>
   );
 }
 
+// create a bottom nav bar and connect all screens to each other
+// home, hamburger, weather - future, light pollution map -> these are not stacked
+// pages that orignate from main pages are stacked
+// create a login page
+//
