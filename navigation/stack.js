@@ -2,16 +2,22 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Text } from 'react-native';
 
 // Screens
 import HomeScreen from './screens/HomeScreen';
-import DetailsScreen from './screens/DetailsScreen';
-import SettingsScreen from './screens/SettingsScreen';
+import LightPolScreen from './screens/LightPolScreen';
+import HamburgerScreen from './screens/HamburgerScreen';
+import WeatherScreen from './screens/WeatherScreen';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 //Screen names
 const homeName = "Home";
-const detailsName = "Details";
-const settingsName = "Settings";
+const weatherName = "Weather";
+const lightPolName = "Light Pollution";
+const hamburgerName = "Account"
+var istele = 0;
 
 const Tab = createBottomTabNavigator();
 
@@ -27,28 +33,51 @@ function MainContainer() {
 
             if (rn === homeName) {
               iconName = focused ? 'home' : 'home-outline';
+              istele = 0;
 
-            } else if (rn === detailsName) {
-              iconName = focused ? 'list' : 'list-outline';
+            } else if (rn === weatherName) {
+              iconName = focused ? 'cloudy-night' : 'cloudy-night-outline';
+              istele = 0;
 
-            } else if (rn === settingsName) {
-              iconName = focused ? 'settings' : 'settings-outline';
+            } else if (rn === lightPolName) {
+              iconName = focused ? 'telescope' : 'telescope';
+              istele = 1;
+            }
+            else if (rn === hamburgerName) {
+            iconName = focused ? 'person-circle' : 'person-circle-outline';
+            istele = 0;
             }
 
             // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
+            if (istele == 0)
+            {
+              return <Ionicons name={iconName} size={size} color={color} />;
+            }
+            else {
+              return<MaterialIcons name={iconName} size={size} color={color} />
+            }
           },
+          headerShown: false,
         })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'grey',
-          labelStyle: { paddingBottom: 10, fontSize: 10 },
-          style: { padding: 10, height: 70}
+        screenOptions2={{
+          "tabBarActiveTintColor": "blue",
+          "tabBarInactiveTintColor": "grey",
+          "tabBarLabelStyle": {
+            "paddingBottom": 20,
+            "fontSize": 10
+          },
+          "tabBarStyle": [
+            {
+              "display": "flex"
+            },
+            null
+          ]
         }}>
 
         <Tab.Screen name={homeName} component={HomeScreen} />
-        <Tab.Screen name={detailsName} component={DetailsScreen} />
-        <Tab.Screen name={settingsName} component={SettingsScreen} />
+        <Tab.Screen name={weatherName} component={WeatherScreen} />
+        <Tab.Screen name={lightPolName} component={LightPolScreen} />
+        <Tab.Screen name={hamburgerName} component={HamburgerScreen} />
 
       </Tab.Navigator>
     </NavigationContainer>

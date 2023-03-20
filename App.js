@@ -1,10 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { HomeStack } from './navigation/stack';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text } from 'react-native';
+import MainContainer, { HomeStack } from './navigation/stack';
 
 export default function App() {
   
   return (
-      <HomeStack/>
+      <MainContainer/>
   );
 }
 
