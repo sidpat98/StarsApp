@@ -9,7 +9,7 @@ export default function App() {
       <MainContainer/>
   );
 }
-
+// I did this today
 // create a bottom nav bar and connect all screens to each other
 // home, hamburger, weather - future, light pollution map -> these are not stacked
 // pages that orignate from main pages are stacked
